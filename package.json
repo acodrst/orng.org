@@ -1,8 +1,8 @@
 {
-  "name": "FloppyPNG",
+  "name": "orng-org",
   "version": "1.0.0",
   "type": "module",
-  "description": "Floppy PNG",
+  "description": "ORNG Org",
   "main": "src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
