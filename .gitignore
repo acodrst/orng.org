@@ -1,6 +1,5 @@
 images/**
 files/**
-dist/**
 node_modules/**
 index.html
 site.txt
