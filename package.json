@@ -6,6 +6,7 @@
   "main": "src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/rollup/dist/bin/rollup -c",
     "run": "deno run -A dist/tool.bundle.js"
   },
   "author": "Scott H.",
@@ -13,11 +14,13 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-node-resolve": "^15.3.0",
+    "rollup": "^4.24.0",
+    "rollup-license-plugin": "^3.0.0"
+  },
+  "dependencies": {
+    "upng-js": "github:acodrst/UPNG.js",
     "byte-base64": "^1.1.0",
     "pako": "github:acodrst/pako",
-    "pxxl": "github:acodrst/pxxl.js",
-    "rollup": "^4.24.0",
-    "rollup-license-plugin": "^3.0.0",
-    "upng-js": "github:acodrst/UPNG.js"
+    "pxxl": "github:acodrst/pxxl.js"
   }
 }
