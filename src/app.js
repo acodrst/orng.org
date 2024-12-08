@@ -59,9 +59,9 @@ for (const i in site) {
 }
 all_arts.sort().reverse()
 for (const i in site[r][p["has_css"]]) {
-  const sheet = document.createElement("style")
-  sheet.innerHTML = vl(site[i][p["has_text"]])
-  document.body.appendChild(sheet)
+  let style = document.createElement('style')
+  style.textContent=vl(site[i][p["has_text"]])
+  document.head.appendChild(style)
 }
 for (const i in site[r][p["has_html"]]) {
   document.body.insertAdjacentHTML("beforeend", vl(site[i][p["has_text"]]))
@@ -144,10 +144,7 @@ function art_nav(art) {
 }
 function get_nav(art) {
   const n = art_nav(art)
-  const an = '<a href="#' + n.first + '">🤛</a> &nbsp; <a href="#' + n.prev +
-    '">👈️</a> &nbsp; ' +
-    '<a href="#' + n.next + '">👉️</a> &nbsp; <a href="#' + n.last + '">🤜</a>'
-  return an
+  return `<a href="#${n.first}">🤛</a> &nbsp; <a href="#${n.prev}">👈️</a> &nbsp; <a href="#${n.next}">👉️</a> &nbsp; <a href="#${n.last}">🤜</a>`
 }
 function all() {
   hide_other("dyno_page")

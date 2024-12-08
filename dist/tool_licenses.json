@@ -2,8 +2,8 @@
   {
     "name": "pako",
     "version": "2.1.0",
-    "repository": "git@github.com:acodrst/pako.git",
-    "source": "https://github.com/acodrst/pako/blob/master/pako.js",
+    "repository": "nodeca/pako",
+    "source": "https://registry.npmjs.org/pako/-/pako-2.1.0.tgz",
     "license": "(MIT AND Zlib)",
     "licenseText": "(The MIT License)\n\nCopyright (C) 2014-2017 by Vitaly Puzrin and Andrei Tuputcyn\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n"
   },
@@ -11,7 +11,7 @@
     "name": "upng-js",
     "version": "2.2.0",
     "repository": "git@github.com:acodrst/UPNG.js.git",
-    "source": "https://github.com/acodrst/UPNG.js/blob/master/UPNG.js",
+    "source": "https://registry.npmjs.org/upng-js/-/upng-js-2.2.0.tgz",
     "license": "MIT",
     "licenseText": "MIT License\n\nCopyright (c) 2017 Photopea\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
   },
@@ -19,8 +19,20 @@
     "name": "pxxl",
     "version": "0.4.0",
     "repository": "git@github.com:acodrst/Pxxl.js.git",
-    "source": "https://github.com/acodrst/Pxxl.js/blob/master/pxxl.js",
+    "source": "https://registry.npmjs.org/pxxl/-/pxxl-0.4.0.tgz",
     "license": "MIT",
     "licenseText": "Pxxl.js\n-------\nCopyright (C) 2011 by Remco Veldkamp\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n\njsparse.js\n----------\nCopyright (C) 2011 by Chris Double\nhttp://github.com/doublec/jsparse\n"
+  },
+  {
+    "name": "byte-base64",
+    "version": "1.1.0",
+    "author": {
+      "name": "Egor Nepomnyaschih",
+      "email": "enepomnyaschih@gmail.com"
+    },
+    "repository": "https://github.com/enepomnyaschih/byte-base64.git",
+    "source": "https://registry.npmjs.org/byte-base64/-/byte-base64-1.1.0.tgz",
+    "license": "MIT",
+    "licenseText": null
   }
 ]

@@ -15,6 +15,7 @@ let lines = [
 ]
 import { UPNG } from "upng-js"
 import * as px from "pxxl"
+import * as base64 from "byte-base64";
 //let px = await import("./pxxl.min.js")
 //import "./pako.min.js"
 //import { UPNG } from "./upng.min.js"
@@ -185,7 +186,7 @@ const sig = await crypto.subtle.sign(
 const u8sig = new Uint8Array(sig)
 const page = Deno.readTextFileSync("assets/pageops.html")
 Deno.writeFileSync(`${tss}-${a32h}.png`, img)
-Deno.writeTextFileSync(`${tss}-${a32h}.txt`, btoa(u8sig))
+Deno.writeTextFileSync(`${tss}-${a32h}.txt`, base64.bytesToBase64(u8sig))
 Deno.writeFileSync(`${Deno.env.get(backup)}${tss}-${a32h}.png`, img)
 for await (const i of Deno.readDir("./")) {
   if (
