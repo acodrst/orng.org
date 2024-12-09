@@ -32,8 +32,20 @@ for (let i of now_text.split("\n")) {
     }],\n`
     : future_text += `${i}\n`
 }
+function arr_to_hex(u8arr) {
+  return `${Array.from(u8arr, (i) => i.toString(16).padStart(2, "0")).join("")}`
+}
+
+
 Deno.writeTextFileSync("site.txt", future_text)
 let text = Deno.readTextFileSync("site.txt") + Deno.readTextFileSync("dist/app.bundle.js")
+
+const last_hash=Deno.readTextFileSync('data_sha512.txt')
+const cur_hash=arr_to_hex(new Uint8Array(await crypto.subtle.digest("SHA-512", new TextEncoder().encode(text))));
+
+if (last_hash.trim() != cur_hash.trim()){
+ Deno.writeTextFileSync('data_sha512.txt',cur_hash)
+
 const pf = px.Pxxl.Font.ParseBDF(Deno.readTextFileSync("assets/8x16.bdf"))
 const f_sites = 2
 const f_tracks = 80
@@ -57,9 +69,6 @@ const head_length = width *
 console.log(
   `1.44 MB Floppy Disk Size=${f_sites * f_tracks * f_sectors * f_bytes}`,
 )
-function arr_to_hex(u8arr) {
-  return `${Array.from(u8arr, (i) => i.toString(16).padStart(2, "0")).join("")}`
-}
 const lwidth = 120
 const factor = .06
 const lstart = lwidth * 272
@@ -214,6 +223,7 @@ Deno.writeTextFileSync(
     .replaceAll("unfilteredlinewidth", width + 1)
     .replaceAll("thisisemoji", emoji),
 )
+}
 function web_deal(req) {
   if (req.method == "GET") {
     const u = new URL(req.url)
