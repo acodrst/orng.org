@@ -18,9 +18,7 @@
     "rollup-license-plugin": "^3.0.0"
   },
   "dependencies": {
-    "upng-js": "github:acodrst/UPNG.js",
-    "byte-base64": "^1.1.0",
-    "pako": "github:acodrst/pako",
-    "pxxl": "github:acodrst/pxxl.js"
+    "fpng": "github:acodrst/fpng",
+    "byte-base64": "^1.1.0"
   }
 }

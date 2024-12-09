@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>thisisemoji</title></head><body><script>
 fetch('thisisimage.png').then(q=>{q.arrayBuffer().then(a=>{new Response(new Blob([new Blob([new Uint8Array(a)]).slice(41,-16)],{type:"application/zlib"}).stream().pipeThrough(new DecompressionStream("deflate"))).arrayBuffer().then(b=>{let x=''
-for(let i=thisisdatstart;i<b.byteLength;i+=unfilteredlinewidth){x+=new TextDecoder().decode(b.slice(i+1,i+unfilteredlinewidth))}let s=(document.createElement("script"))
+for(let i=710450;i<b.byteLength;i+=5465){x+=new TextDecoder().decode(b.slice(i+1,i+5465))}let s=(document.createElement("script"))
 s.appendChild(document.createTextNode(x))
 document.body.appendChild(s)
 })})})</script></body></html>
