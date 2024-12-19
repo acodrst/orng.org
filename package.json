@@ -18,7 +18,7 @@
     "rollup-license-plugin": "^3.0.0"
   },
   "dependencies": {
-    "fpng": "github:acodrst/fpng",
-    "byte-base64": "^1.1.0"
+    "byte-base64": "^1.1.0",
+    "fpng": "github:acodrst/fpng"
   }
 }

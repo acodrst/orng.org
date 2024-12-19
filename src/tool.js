@@ -1,18 +1,8 @@
 const emoji = "🍊"
 const domain = "orng.org"
-const backup = "CL_ORN_BACKUP"
+const backup = Deno.env.get("CL_ORN_BACKUP");
 const dt = new Date()
 const tss = dt.toISOString().replaceAll(":", "").replaceAll("-", "").replaceAll(".","",)
-let lines = [
-  `${" ".repeat((120 - domain.length) / 2)}${domain.toUpperCase()} ${tss}`,
-  "This image includes website knowledge as triples. Normally, this file is named with <UTC timestamp>-<Adler32>.png. Use OpenSSL to verify the RSA-PSS sig-",
-  "nature using the same name with a .txt extension. The Adler32 checksum is 20 bytes in from the end of the PNG, and can be verified with a binary editor.",
-  " ".repeat(37) +
-  "-> If possible, verify the image at floppypng.com before loading. <-",
-  `The triples and code to render can be extracted using Deno. Run: Deno.writeFileSync("u.z",Deno.readFileSync("<UTC timestamp>-<Adler32>.png").slice(41,-16))`,
-  `Extract with pigz. The extracted data, u, has a null (0x00) at the beginning of each line of 5465 characters. These can be removed automatically with this:`,
-  `let i,n=5465,x='',b=Deno.readFileSync("u");for(i=n*130;i<b.length;i+=n){x+=new TextDecoder().decode(b.slice(i+1,i+n))};Deno.writeTextFile("u.js",x.trim())`,
-]
 import * as base64 from "byte-base64";
 import { fpng } from "fpng"
 //let px = await import("./pxxl.min.js")
@@ -38,16 +28,14 @@ function arr_to_hex(u8arr) {
 
 Deno.writeTextFileSync("site.txt", future_text)
 let text = Deno.readTextFileSync("site.txt") + Deno.readTextFileSync("dist/app.bundle.js")
-
+Deno.writeTextFileSync('s.txt',text)
 const last_hash=Deno.readTextFileSync('data_sha512.txt')
 const cur_hash=arr_to_hex(new Uint8Array(await crypto.subtle.digest("SHA-512", new TextEncoder().encode(text))));
-
 if (last_hash.trim() != cur_hash.trim()){
  Deno.writeTextFileSync('data_sha512.txt',cur_hash)
-  const img=fpng(text,domain,tss)
-
-let a32h = arr_to_hex(img.slice(-20, -16))
-console.log(`Generated FloppyPNG Size=${img.length}`)
+  const fp_obj=fpng(` Verify sig at floppypng.com - ${tss}`,text)
+console.log(fp_obj)
+let a32h = arr_to_hex(fp_obj.im.slice(-20, -16))
 
 const priv = Deno.readTextFileSync(Deno.env.get("CL_PRIV")).replace(
   /.*KEY-----(.+?)-----END.*/smg,
@@ -72,13 +60,13 @@ const sig = await crypto.subtle.sign(
     saltLength: 32,
   },
   prv,
-  img,
+  fp_obj.im,
 )
 const u8sig = new Uint8Array(sig)
 const page = Deno.readTextFileSync("assets/pageops.html")
-Deno.writeFileSync(`${tss}-${a32h}.png`, img)
+Deno.writeFileSync(`${tss}-${a32h}.png`, fp_obj.im)
 Deno.writeTextFileSync(`${tss}-${a32h}.txt`, base64.bytesToBase64(u8sig))
-Deno.writeFileSync(`${Deno.env.get(backup)}${tss}-${a32h}.png`, img)
+Deno.writeFileSync(`${backup}${tss}-${a32h}.png`, fp_obj.im)
 for await (const i of Deno.readDir("./")) {
   if (
     i.name != `${tss}-${a32h}.png` && i.name.match(/^\d{8}T\d{9}Z\-\w{8}.png$/)
@@ -97,7 +85,8 @@ Deno.writeTextFileSync(
   `${domain}.page.html`,
   page
     .replaceAll("thisisimage", `${tss}-${a32h}`)
-    .replaceAll("thisisemoji", emoji),
+    .replaceAll("thisisemoji", emoji)
+    .replaceAll("thisislength",fp_obj.ln)
 )
 }
 function web_deal(req) {

