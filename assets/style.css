@@ -176,9 +176,6 @@ body {
   justify-content: right;
   display: flex;
 }
-#sean_button {
-  cursor: pointer; 
-}
 .taggy{
   cursor: pointer; 
   display: inline-block;

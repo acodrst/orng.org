@@ -14,9 +14,9 @@ const display_initial = {
 };
 function vl(o) {
   try {
-    return Object.keys(o)[0]
+    return Object.keys(o)[0];
   } catch {
-    return ""
+    return "";
   }
 }
 const site = {};
@@ -24,7 +24,7 @@ for (const tri of t) {
   tri.reduce(
     (a, c) => {
       a[c] = a[c] || {};
-      return a[c]
+      return a[c];
     },
     site,
   );
@@ -36,7 +36,7 @@ function gf_nav(gf) {
   }</a>
   <a href="#${gf.f}" title="${vl(site[gf.f][p["has_label"]])}">${
     vl(site[gf.f][p["has_emoji"]])
-  }</a>`
+  }</a>`;
 }
 function gf(nd) {
   try {
@@ -45,9 +45,9 @@ function gf(nd) {
     return {
       "f": f,
       "g": g,
-    }
+    };
   } catch {
-    return false
+    return false;
   }
 }
 const all_arts = [];
@@ -58,8 +58,8 @@ for (const i in site) {
 }
 all_arts.sort().reverse();
 for (const i in site[r][p["has_css"]]) {
-  let style = document.createElement('style');
-  style.textContent=vl(site[i][p["has_text"]]);
+  const style = document.createElement("style");
+  style.textContent = vl(site[i][p["has_text"]]);
   document.head.appendChild(style);
 }
 for (const i in site[r][p["has_html"]]) {
@@ -73,7 +73,9 @@ for (const i in site[r][p["has_sub"]]) {
   }</a>`;
 }
 document.getElementById("header").innerHTML = `<div id="sites" class="txt_l">
-<a href="#${r}" title="${vl(site[r][p["has_label"]])}">${vl(site[r][p["has_emoji"]])}</a>${top_cats}
+<a href="#${r}" title="${vl(site[r][p["has_label"]])}">${
+  vl(site[r][p["has_emoji"]])
+}</a>${top_cats}
 <a href="#${tags}" title="Tags">🔖</a>
 <a href="#search" title="Search">🔍️</a>
 <a href="#all" title="All Articles">📙</a>
@@ -108,7 +110,7 @@ document.getElementById("2").checked = true;
 let source_files = document.querySelector('input[name = "f"]:checked').value;
 function sm(pg) {
   if (globalThis.origin.includes("localhost")) {
-    return pg
+    return pg;
   } else {
     return pg.replace(
       /src="\/images\//g,
@@ -116,7 +118,7 @@ function sm(pg) {
     )
       .replace(/src="\/files\//g, 'src="https://' + source_files + "files/")
       .replace(/href="\/images\//g, 'href="https://' + source_files + "images/")
-      .replace(/href="\/files\//g, 'href="https://' + source_files + "files/")
+      .replace(/href="\/files\//g, 'href="https://' + source_files + "files/");
   }
 }
 globalThis.addEventListener("hashchange", () => {
@@ -134,16 +136,16 @@ function art_nav(art) {
   let cur_art = -1;
   do {
     cur_art++;
-  } while (art_line[cur_art] != art && cur_art < art_line.length - 1)
+  } while (art_line[cur_art] != art && cur_art < art_line.length - 1);
   const last = art_line[0];
   const first = art_line.slice(-1);
   const next = cur_art > 0 ? art_line[cur_art - 1] : last;
   const prev = cur_art < art_line.length - 1 ? art_line[cur_art + 1] : first;
-  return { "first": first, "prev": prev, "next": next, "last": last }
+  return { "first": first, "prev": prev, "next": next, "last": last };
 }
 function get_nav(art) {
   const n = art_nav(art);
-  return `<a href="#${n.first}">🤛</a> &nbsp; <a href="#${n.prev}">👈️</a> &nbsp; <a href="#${n.next}">👉️</a> &nbsp; <a href="#${n.last}">🤜</a>`
+  return `<a href="#${n.first}">🤛</a> &nbsp; <a href="#${n.prev}">👈️</a> &nbsp; <a href="#${n.next}">👉️</a> &nbsp; <a href="#${n.last}">🤜</a>`;
 }
 function all() {
   hide_other("dyno_page");
@@ -292,7 +294,7 @@ function return_matches(words) {
       }
     }
   }
-  return all_sets.reduce((a, c) => a.intersection(c))
+  return all_sets.reduce((a, c) => a.intersection(c));
 }
 document.getElementById("search_box").addEventListener("click", function () {
   this.value = "";
@@ -312,7 +314,7 @@ document.getElementById("search_box").addEventListener("change", function () {
   if (srch[1] != "") words.push(new RegExp("\\W" + (srch[1]) + "\\W", "gi"));
   if (srch[2] != "") words.push(new RegExp("\\W" + (srch[2]) + "\\W", "gi"));
   function replex(match) {
-    return "<mark>" + match + "</mark>"
+    return "<mark>" + match + "</mark>";
   }
   let i = 0;
   return_matches(words).forEach((art) => {
@@ -373,7 +375,7 @@ function search() {
 function tag(nd) {
   hide_other("dyno_page");
   let pg = `Tags | ${vl(site[nd][p["has_label"]])}`;
-  if (nd=="z9b") pg+=`${vl(site["vjk"]["c55"])}`;
+  if (nd == "z9b") pg += `${vl(site["vjk"]["c55"])}`;
   for (const i of all_arts) {
     if (i[1] in site[nd][p["tagged_in"]]) {
       pg += `<div class="lines"><div class="dt">${i[0]}</div>:${
@@ -411,13 +413,6 @@ function refresh() {
     ? father(hash)
     : hide_other("index_page");
 }
-document.getElementById("sean_button").addEventListener("click", () => {
-  for (const i in display_initial) {
-    if (document.getElementById(i).style.display != "none") {
-      document.getElementById(i).scrollIntoView({ behavior: "smooth" });
-    }
-  }
-});
 document.addEventListener("keydown", (e) => {
   if ("ArrowRightArrowLeftArrowUpArrowDown".includes(e.key)) {
     const hash = globalThis.location.hash.substring(1) || "home";
@@ -426,8 +421,6 @@ document.addEventListener("keydown", (e) => {
         ? globalThis.location = "#" + art_nav(hash).next
         : e.key == "ArrowLeft"
         ? globalThis.location = "#" + art_nav(hash).prev
-        : e.key == "ArrowUp"
-        ? document.getElementById("dyno_page").scrollIntoView()
         : document.getElementById("end_tags").scrollIntoView(false);
     }
   }
