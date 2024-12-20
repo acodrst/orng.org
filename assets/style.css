@@ -143,7 +143,10 @@ body {
   padding: .2rem;
   display: flex;
   letter-spacing:.3rem;
-  align-self: flex-start;
+  align-self: center;
+}
+#sites svg {
+  height:100%;
 }
 #art_header {
   display:inline-block;
