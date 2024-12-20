@@ -5,3 +5,5 @@ index.html
 site.txt
 .*
 !.gitignore
+fflate.min.js
+fzstd.min.js

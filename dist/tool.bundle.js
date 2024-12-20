@@ -7937,9 +7937,6 @@ const tss = dt.toISOString().replaceAll(":", "").replaceAll("-", "").replaceAll(
   ".",
   "",
 );
-//let px = await import("./pxxl.min.js")
-//import "./pako.min.js"
-//import { UPNG } from "./upng.min.js"
 const now_text = Deno.readTextFileSync("site.txt").trim();
 let future_text = "";
 for (const i of now_text.split("\n")) {
@@ -8003,6 +8000,7 @@ if (last_hash.trim() != cur_hash.trim()) {
   );
   const u8sig = new Uint8Array(sig);
   const page = Deno.readTextFileSync("assets/pageops.html");
+  const page_local = Deno.readTextFileSync("assets/pageops.local.html");
   Deno.writeFileSync(`${tss}-${a32h}.png`, fp_obj.im);
   Deno.writeTextFileSync(`${tss}-${a32h}.txt`, bytesToBase64(u8sig));
   Deno.writeFileSync(`${backup}${tss}-${a32h}.png`, fp_obj.im);
@@ -8029,12 +8027,19 @@ if (last_hash.trim() != cur_hash.trim()) {
       .replaceAll("thisisemoji", emoji)
       .replaceAll("thisislength", fp_obj.ln),
   );
+  Deno.writeTextFileSync(
+    `${domain}.page.local.html`,
+    page_local
+      .replaceAll("thisisimage", `${tss}-${a32h}`)
+      .replaceAll("thisisemoji", emoji)
+      .replaceAll("thisislength", fp_obj.ln),
+  );
 }
 function web_deal(req) {
   if (req.method == "GET") {
     const u = new URL(req.url);
     const page = u.pathname == "/"
-      ? `orng.org.page.html`
+      ? `orng.org.page.local.html`
       : u.pathname.replace("/", "");
     let npg;
     let response;
