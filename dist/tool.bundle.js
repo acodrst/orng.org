@@ -7970,7 +7970,6 @@ if (last_hash.trim() != cur_hash.trim()) {
   Deno.writeTextFileSync("data_sha512.txt", cur_hash);
   const fp_obj = fpng(` Verify sig at floppypng.com - ${tss}`, text);
   const a32h = arr_to_hex(fp_obj.im.slice(-20, -16));
-
   const priv = Deno.readTextFileSync(Deno.env.get("CL_PRIV")).replace(
     /.*KEY-----(.+?)-----END.*/smg,
     "$1",
