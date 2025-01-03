@@ -6,4 +6,6 @@ site.txt
 .*
 !.gitignore
 fflate.min.js
-fzstd.min.js
+fzstd.min.jsnode_modules/**
+*.backup
+*~
