@@ -7959,7 +7959,6 @@ function arr_to_hex(u8arr) {
 Deno.writeTextFileSync("site.txt", future_text);
 const text = Deno.readTextFileSync("site.txt") +
   Deno.readTextFileSync("dist/app.bundle.js");
-Deno.writeTextFileSync("s.txt", text);
 const last_hash = Deno.readTextFileSync("data_sha512.txt");
 const cur_hash = arr_to_hex(
   new Uint8Array(
