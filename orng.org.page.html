@@ -16,7 +16,7 @@
   integrity="sha512-8l6PLZDUdQBuIjsM0vEKUCup9KP+EsB6NlvUtFrDneI1JoIvIJGmxIoiq0qnA31BeKdAwYcTk0TQg71AX9HgRA==" 
   crossorigin="anonymous"></script>
   <script>
-  fetch("20250308T061201394Z-2a1c1d6b.png").then((q) => {
+  fetch("20250313T153828044Z-6030489b.png").then((q) => {
   q.arrayBuffer().then((a) => {
     let l = fflate.unzlibSync(new Uint8Array(a.slice(41, -16))),
       f = 0,
@@ -34,7 +34,7 @@
         p++;
       }
     } while (f < l.length);
-    let z = fzstd.decompress(u.slice(7 * 1024, 7 * 1024 + 1041721)),
+    let z = fzstd.decompress(u.slice(7 * 1024, 7 * 1024 + 1041985)),
       s = document.createElement("script");
     s.appendChild(document.createTextNode(new TextDecoder().decode(z)));
     document.body.appendChild(s);
