@@ -4,40 +4,42 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Journal entries from 1990 through 2024, including memories back to 1970, as well as web articles covering electronics, computers, coding, wrenching, and cooking"> 
+  <meta name="description"
+    content="Journal entries from 1990 through 2024, including memories back to 1970, as well as web articles covering electronics, computers, coding, wrenching, and cooking">
   <title>thisisemoji</title>
 </head>
 
 <body>
+  <svg id="loading" width="90" height="50"><rect width="90" height="50" fill="none" /><text y="20">⏳<animateMotion path="M 0 0 H 60 Z" dur="3s" repeatCount=9 /></text></svg>
   <script src="fzstd.min.js"> </script>
   <script src="fflate.min.js"></script>
   <script>
-  fetch("thisisimage.png").then((q) => {
-  q.arrayBuffer().then((a) => {
-    let l = fflate.unzlibSync(new Uint8Array(a.slice(41, -16))),
-      f = 0,
-      p = 0,
-      r = 0,
-      u = new Uint8Array(l.length);
-    do {
-      if (r == 1024 || f == 0) {
-        f++;
-        r = 0;
-      } else {
-        u[p] = l[f];
-        r++;
-        f++;
-        p++;
-      }
-    } while (f < l.length);
-    let z = fzstd.decompress(u.slice(7 * 1024, 7 * 1024 + thisislength)),
-      s = document.createElement("script");
-    s.appendChild(document.createTextNode(new TextDecoder().decode(z)));
-    document.body.appendChild(s);
-  });
-}); 
-  
-</script>
+    fetch("thisisimage.png").then((q) => {
+      q.arrayBuffer().then((a) => {
+        let l = fflate.unzlibSync(new Uint8Array(a.slice(41, -16))),
+          f = 0,
+          p = 0,
+          r = 0,
+          u = new Uint8Array(l.length);
+        do {
+          if (r == 1024 || f == 0) {
+            f++;
+            r = 0;
+          } else {
+            u[p] = l[f];
+            r++;
+            f++;
+            p++;
+          }
+        } while (f < l.length);
+        let z = fzstd.decompress(u.slice(7 * 1024, 7 * 1024 + thisislength)),
+          s = document.createElement("script");
+        s.appendChild(document.createTextNode(new TextDecoder().decode(z)));
+        document.body.appendChild(s);
+      });
+    });
+
+  </script>
 </body>
 
 </html>

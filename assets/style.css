@@ -135,6 +135,9 @@ body {
   align-self: center;
   display: flex;
 }
+#loading{
+  display:none;
+}
 #art{
   padding:.5rem;
 }
