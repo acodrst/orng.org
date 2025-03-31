@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <style>#loading{margin-top:30vmin;margin-left:35vmin;}</style>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Journal entries from 1990 through 2024, including memories back to 1970, as well as web articles covering electronics, computers, coding, wrenching, and cooking"> 
   <title>🍊</title>
@@ -17,7 +18,7 @@
   integrity="sha512-8l6PLZDUdQBuIjsM0vEKUCup9KP+EsB6NlvUtFrDneI1JoIvIJGmxIoiq0qnA31BeKdAwYcTk0TQg71AX9HgRA==" 
   crossorigin="anonymous"></script>
   <script>
-  fetch("20250316T162427738Z-73a57dd8.png").then((q) => {
+  fetch("20250331T202021818Z-abeca707.png").then((q) => {
   q.arrayBuffer().then((a) => {
     let l = fflate.unzlibSync(new Uint8Array(a.slice(41, -16))),
       f = 0,
@@ -35,7 +36,7 @@
         p++;
       }
     } while (f < l.length);
-    let z = fzstd.decompress(u.slice(7 * 1024, 7 * 1024 + 1041968)),
+    let z = fzstd.decompress(u.slice(7 * 1024, 7 * 1024 + 1041091)),
       s = document.createElement("script");
     s.appendChild(document.createTextNode(new TextDecoder().decode(z)));
     document.body.appendChild(s);
