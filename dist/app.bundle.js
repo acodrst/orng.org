@@ -19,29 +19,29 @@ function vl(o) {
     return "";
   }
 }
-const site = {};
-for (const tri of t) {
+site.build = {};
+for (const tri of site.t) {
   tri.reduce(
     (a, c) => {
       a[c] = a[c] || {};
       return a[c];
     },
-    site,
+    site.build,
   );
 }
 function gf_nav(gf) {
   return `<a href="#${gf.g}" 
-  title="${vl(site[gf.g][p["has_label"]])}">${
-    vl(site[gf.g][p["has_emoji"]])
+  title="${vl(site.build[gf.g][site.p["has_label"]])}">${
+    vl(site.build[gf.g][site.p["has_emoji"]])
   }</a>
-  <a href="#${gf.f}" title="${vl(site[gf.f][p["has_label"]])}">${
-    vl(site[gf.f][p["has_emoji"]])
+  <a href="#${gf.f}" title="${vl(site.build[gf.f][site.p["has_label"]])}">${
+    vl(site.build[gf.f][site.p["has_emoji"]])
   }</a>`;
 }
 function gf(nd) {
   try {
-    const f = vl(site[nd][p["is_instance_of"]]);
-    const g = vl(site[f][p["has_sup"]]);
+    const f = vl(site.build[nd][site.p["is_instance_of"]]);
+    const g = vl(site.build[f][site.p["has_sup"]]);
     return {
       "f": f,
       "g": g,
@@ -51,30 +51,30 @@ function gf(nd) {
   }
 }
 const all_arts = [];
-for (const i in site) {
-  if (site[i][p["has_contents"]] && site[i][p["has_date"]]) {
-    all_arts.push([vl(site[i][p["has_date"]]), i]);
+for (const i in site.build) {
+  if (site.build[i]?.[site.p["has_contents"]] && site.build[i]?.[site.p["has_date"]]) {
+    all_arts.push([vl(site.build[i][site.p["has_date"]]), i]);
   }
 }
 all_arts.sort().reverse();
-for (const i in site[r][p["has_css"]]) {
+for (const i in site.build[site.r][site.p["has_css"]]) {
   const style = document.createElement("style");
-  style.textContent = vl(site[i][p["has_text"]]);
+  style.textContent = vl(site.build[i][site.p["has_text"]]);
   document.head.appendChild(style);
 }
-for (const i in site[r][p["has_html"]]) {
-  document.body.insertAdjacentHTML("beforeend", vl(site[i][p["has_text"]]));
+for (const i in site.build[site.r][site.p["has_html"]]) {
+  document.body.insertAdjacentHTML("beforeend", vl(site.build[i][site.p["has_text"]]));
 }
-const tags = vl(site[r][p["tagged_with"]]);
+const tags = vl(site.build[site.r][site.p["tagged_with"]]);
 let top_cats = "";
-for (const i in site[r][p["has_sub"]]) {
-  top_cats += `<a href="#${i}" title="${vl(site[i][p["has_label"]])}">${
-    vl(site[i][p["has_emoji"]])
+for (const i in site.build[site.r][site.p["has_sub"]]) {
+  top_cats += `<a href="#${i}" title="${vl(site.build[i][site.p["has_label"]])}">${
+    vl(site.build[i][site.p["has_emoji"]])
   }</a>`;
 }
 document.getElementById("header").innerHTML = `<div id="sites" class="txt_l">
-<a href="#${r}" title="${vl(site[r][p["has_label"]])}">${
-  vl(site[r][p["has_emoji"]])
+<a href="#${site.r}" title="${vl(site.build[site.r][site.p["has_label"]])}">${
+  vl(site.build[site.r][site.p["has_emoji"]])
 }</a>${top_cats}
 <a href="#${tags}" title="Tags">🔖</a>
 <a href="#search" title="Search">🔍️</a>
@@ -86,24 +86,24 @@ pg = "⏳";
 for (const i of all_arts.slice(0, 6)) {
   pg += `<div class="lines"><div class="dt">${i[0]}</div>:${
     gf_nav(gf(i[1]))
-  }<a href="#${i[1]}" title="${vl(site[i[1]][p["has_label"]])} Article">${
-    vl(site[i[1]][p["has_label"]])
+  }<a href="#${i[1]}" title="${vl(site.build[i[1]][site.p["has_label"]])} Article">${
+    vl(site.build[i[1]][site.p["has_label"]])
   }</a></div>`;
 }
 document.getElementById("bydate").innerHTML = pg;
-const fav_id = vl(site[r][p["favorited_with"]]);
-let fav_pins = `${vl(site[fav_id][p["has_emoji"]])}`;
-for (const i in site[fav_id][p["has_instance"]]) {
+const fav_id = vl(site.build[site.r][site.p["favorited_with"]]);
+let fav_pins = `${vl(site.build[fav_id][site.p["has_emoji"]])}`;
+for (const i in site.build[fav_id][site.p["has_instance"]]) {
   fav_pins += `<div class="lines">${gf_nav(gf(i))}<a href="#${i}" title="${
-    vl(site[i][p["has_label"]])
-  }">${vl(site[i][p["has_label"]])}</a></div>`;
+    vl(site.build[i][site.p["has_label"]])
+  }">${vl(site.build[i][site.p["has_label"]])}</a></div>`;
 }
 document.getElementById("pins").innerHTML = fav_pins;
 let tinies = "";
-for (const i in site[r][p["has_tinies"]]) {
-  tinies += `<a href="${vl(site[i][p["has_link"]])}" title="${
-    vl(site[i][p["has_label"]])
-  }">${vl(site[i][p["has_emoji"]])}</a> `;
+for (const i in site.build[site.r][site.p["has_tinies"]]) {
+  tinies += `<a href="${vl(site.build[i][site.p["has_link"]])}" title="${
+    vl(site.build[i][site.p["has_label"]])
+  }">${vl(site.build[i][site.p["has_emoji"]])}</a> `;
 }
 document.getElementById("tinies").innerHTML = tinies;
 document.getElementById("2").checked = true;
@@ -145,7 +145,7 @@ function art_nav(art) {
 }
 function get_nav(art) {
   const n = art_nav(art);
-  return `<a href="#${n.first}">🤛</a> &nbsp; <a href="#${n.prev}">👈️</a> &nbsp; <a href="#${n.next}">👉️</a> &nbsp; <a href="#${n.last}">🤜</a>`;
+  return `<a href="#${n.first}">⏮️</a><a href="#${n.prev}">⏪️</a><a href="#${n.next}">⏩️</a><a href="#${n.last}">⏭️</a>`;
 }
 function all() {
   hide_other("dyno_page");
@@ -154,8 +154,8 @@ function all() {
   for (const i of all_arts) {
     pg += `<div class="lines"><div class="dt">${i[0]}</div>:${
       gf_nav(gf(i[1]))
-    }<a href="#${i[1]}">${vl(site[i[1]][p["has_label"]])}</a></div>`;
-    l += vl(site[i[1]][p["has_contents"]]).length;
+    }<a href="#${i[1]}">${vl(site.build[i[1]][site.p["has_label"]])}</a></div>`;
+    l += vl(site.build[i[1]][site.p["has_contents"]]).length;
   }
   document.getElementById("dyno_page").innerHTML = pg + "<br>length of all: " +
     (l / 1048576).toString().slice(0, 4) + "Mi";
@@ -167,20 +167,20 @@ function son(art) {
   let other = "";
   let pgin = "";
   let pg_tags = "";
-  if (site[art]?.[p["has_tag"]]) {
-    for (const i in site[art][p["has_tag"]]) {
-      pg_tags += `<a href="#${i}">#${vl(site[i][p["has_label"]])}</a> `;
+  if (site.build[art]?.[site.p["has_tag"]]) {
+    for (const i in site.build[art][site.p["has_tag"]]) {
+      pg_tags += `<a href="#${i}">#${vl(site.build[i][site.p["has_label"]])}</a> `;
     }
-    for (const t in site[art][p["has_tag"]]) {
+    for (const t in site.build[art][site.p["has_tag"]]) {
       let cur_tag = t;
-      for (const j in site[t][p["tagged_in"]]) {
+      for (const j in site.build[t][site.p["tagged_in"]]) {
         if (j != art) {
           if (cur_tag != "") {
-            pgin += `<p><a href="#${t}">#${vl(site[t][p["has_label"]])}</a>`;
+            pgin += `<p><a href="#${t}">#${vl(site.build[t][site.p["has_label"]])}</a>`;
             cur_tag = "";
           }
           pgin += `<br> &nbsp; <a href="#${j}">${
-            vl(site[j][p["has_label"]])
+            vl(site.build[j][site.p["has_label"]])
           }</a>`;
         }
       }
@@ -192,19 +192,19 @@ function son(art) {
   document.getElementById("dyno_page").innerHTML = `
     <div id="hb_cont">
       <div id="header_block">
-        <b><i>${vl(site[relatives.g][p["has_label"]])} | ${
-    vl(site[relatives.f][p["has_label"]])
+        <b><i>${vl(site.build[relatives.g][site.p["has_label"]])} | ${
+    vl(site.build[relatives.f][site.p["has_label"]])
   }</i></b>
         <div id="art_header">${gf_nav(gf(art))}
-          ${vl(site[art][p["has_label"]])}<br>📅 ${vl(site[art][p["has_date"]])}
+          ${vl(site.build[art][site.p["has_label"]])}<br>📅 ${vl(site.build[art][site.p["has_date"]])}
           &nbsp; 
         </div>
       <div id="navigation" class="nav">${get_nav(art)}</div>
     </div>
     </div>
-  <div id="art">${sm(vl(site[art][p["has_contents"]]))}</div>${pg_tags}
+  <div id="art">${sm(vl(site.build[art][site.p["has_contents"]]))}</div>${pg_tags}
   <div id="end_tags"></div><div class="comments">${
-    vl(site[art][p["has_comment"]])
+    vl(site.build[art][site.p["has_comment"]])
   }${other}</div>`;
 }
 for (const i of [0, 1, 2]) {
@@ -223,7 +223,7 @@ function update_art_line() {
   const tag_search = localStorage.getItem("tag_search");
   for (const i of all_arts) {
     if (
-      (tag_search.length == 3 && site[i[1]]?.[p["has_tag"]]?.[tag_search] ||
+      (tag_search.length == 3 && site.build[i[1]]?.[site.p["has_tag"]]?.[tag_search] ||
         tag_search == "") &&
       (
         art.length == 3 && document.getElementById("s2").checked &&
@@ -242,12 +242,12 @@ document.getElementById("sel_tag").innerHTML = `Filter by search tag: --&gt;
       <a title="Click to clear"><b></b></a> &lt;--`;
 const ltags = [];
 const rtags = [];
-for (const i in site[tags][p["has_instance"]]) {
+for (const i in site.build[tags][site.p["has_instance"]]) {
   ltags.push(`${
-    String(Object.keys(site[i][p["tagged_in"]]).length)
+    String(Object.keys(site.build[i][site.p["tagged_in"]]).length)
       .padStart(3, "0")
-  }-${vl(site[i][p["has_label"]])}-${i}`);
-  rtags.push(`${vl(site[i][p["has_label"]])}-${i}`);
+  }-${vl(site.build[i][site.p["has_label"]])}-${i}`);
+  rtags.push(`${vl(site.build[i][site.p["has_label"]])}-${i}`);
 }
 for (const i of ltags.sort().reverse()) {
   const f = i.split("-");
@@ -273,7 +273,7 @@ document.getElementById("tag_details").addEventListener("click", (e) => {
     localStorage.setItem("tag_search", t);
     document.getElementById("sel_tag").innerHTML =
       `Selected search filter tag: --&gt;&gt;
-    ${vl(site[t][p["has_label"]])} &lt;&lt;-- Click to clear.`;
+    ${vl(site.build[t][site.p["has_label"]])} &lt;&lt;-- Click to clear.`;
     update_art_line();
   }
   if (e.target.getAttribute("id") == "sel_tag") {
@@ -284,12 +284,11 @@ document.getElementById("tag_details").addEventListener("click", (e) => {
   }
 });
 function return_matches(words) {
-  console.log(words);
   const all_sets = [];
   for (const w in words) {
     all_sets.push(new Set());
     for (const i of all_arts) {
-      if (vl(site[i[1]][p["has_contents"]]).match(words[w])) {
+      if (vl(site.build[i[1]][site.p["has_contents"]]).match(words[w])) {
         all_sets[w].add(i[1]);
       }
     }
@@ -319,19 +318,19 @@ document.getElementById("search_box").addEventListener("change", function () {
   let i = 0;
   return_matches(words).forEach((art) => {
     i++;
-    const artTitle = vl(site[art][p["has_label"]]);
+    const artTitle = vl(site.build[art][site.p["has_label"]]);
     const artContent = srch[2] != ""
-      ? vl(site[art][p["has_contents"]]).replace(words[2], replex).replace(
+      ? vl(site.build[art][site.p["has_contents"]]).replace(words[2], replex).replace(
         words[1],
         replex,
       ).replace(words[0], replex)
       : srch[1] != ""
-      ? vl(site[art][p["has_contents"]]).replace(words[1], replex).replace(
+      ? vl(site.build[art][site.p["has_contents"]]).replace(words[1], replex).replace(
         words[0],
         replex,
       )
-      : vl(site[art][p["has_contents"]]).replace(words[0], replex);
-    const artDate = vl(site[art][p["has_date"]]);
+      : vl(site.build[art][site.p["has_contents"]]).replace(words[0], replex);
+    const artDate = vl(site.build[art][site.p["has_date"]]);
     pg +=
       `<p><b>***** ${i.toString()} *****</b> <a href="#${art}">${artDate} : ${artTitle}</a><br>
      <div class="ind1">${artContent}</div>`;
@@ -344,26 +343,26 @@ document.getElementById("search_box").addEventListener("change", function () {
 refresh();
 function father(nd) {
   hide_other("dyno_page");
-  pg = `<h2>${vl(site[nd][p["has_emoji"]])} ${
-    vl(site[nd][p["has_label"]])
+  pg = `<h2>${vl(site.build[nd][site.p["has_emoji"]])} ${
+    vl(site.build[nd][site.p["has_label"]])
   }</h2 >`;
   for (const i of all_arts) {
-    if (vl(site[i[1]][p["is_instance_of"]]) == nd) {
+    if (vl(site.build[i[1]][site.p["is_instance_of"]]) == nd) {
       pg += `<div class="lines"> <div class="dt">${i[0]}</div>:${
         gf_nav(gf(i[1]))
-      } <a href="#${i[1]}">${vl(site[i[1]][p["has_label"]])}</a></div> `;
+      } <a href="#${i[1]}">${vl(site.build[i[1]][site.p["has_label"]])}</a></div> `;
     }
   }
   document.getElementById("dyno_page").innerHTML = pg;
 }
 function grandfather(nd) {
   hide_other("dyno_page");
-  pg = `<h2>${vl(site[nd][p["has_emoji"]])} ${
-    vl(site[nd][p["has_label"]])
+  pg = `<h2>${vl(site.build[nd][site.p["has_emoji"]])} ${
+    vl(site.build[nd][site.p["has_label"]])
   }</h2 >`;
-  for (const i in site[nd][p["has_sub"]]) {
-    pg += `<div class="lines"><a href="#${i}">${vl(site[i][p["has_emoji"]])}${
-      vl(site[i][p["has_label"]])
+  for (const i in site.build[nd][site.p["has_sub"]]) {
+    pg += `<div class="lines"><a href="#${i}">${vl(site.build[i][site.p["has_emoji"]])}${
+      vl(site.build[i][site.p["has_label"]])
     }</a></div> `;
   }
   document.getElementById("dyno_page").innerHTML = pg;
@@ -374,14 +373,14 @@ function search() {
 }
 function tag(nd) {
   hide_other("dyno_page");
-  let pg = `Tags | ${vl(site[nd][p["has_label"]])}`;
-  if (nd == "z9b") pg += `${vl(site["vjk"]["c55"])}`;
+  let pg = `Tags | ${vl(site.build[nd][site.p["has_label"]])}`;
+  if (nd == "z9b") pg += `${vl(site.build["vjk"]["c55"])}`;
   for (const i of all_arts) {
-    if (i[1] in site[nd][p["tagged_in"]]) {
+    if (i[1] in site.build[nd][site.p["tagged_in"]]) {
       pg += `<div class="lines"><div class="dt">${i[0]}</div>:${
         gf_nav(gf(i[1]))
-      }<a href="#${i[1]}" title="${vl(site[i[1]][p["has_label"]])} Article">${
-        vl(site[i[1]][p["has_label"]])
+      }<a href="#${i[1]}" title="${vl(site.build[i[1]][site.p["has_label"]])} Article">${
+        vl(site.build[i[1]][site.p["has_label"]])
       }</a></div>`;
     }
   }
@@ -390,12 +389,12 @@ function tag(nd) {
 function refresh() {
   const hash = globalThis.location.hash.substring(1) || "home";
   source_files = document.querySelector('input[name = "f"]:checked').value;
-  const lbl = vl(site?.[hash]?.[p?.["has_label"]]);
+  const lbl = vl(site.build?.[hash]?.[site.p?.["has_label"]]);
   gf(hash)
     ? son(hash)
-    : site?.[hash]?.[p?.["tagged_in"]]
+    : site.build?.[hash]?.[site.p?.["tagged_in"]]
     ? tag(hash)
-    : hash == r
+    : hash == site.r
     ? hide_other("index_page")
     : hash == "all"
     ? all()
@@ -407,9 +406,9 @@ function refresh() {
     ? hide_other("legal_details")
     : lbl == "Tags"
     ? hide_other("tag_details")
-    : site?.[hash]?.[p?.["has_sup"]] && site?.[hash]?.[p?.["has_sub"]]
+    : site.build?.[hash]?.[site.p?.["has_sup"]] && site.build?.[hash]?.[site.p?.["has_sub"]]
     ? grandfather(hash)
-    : site?.[hash]?.[p?.["has_instance"]] && site?.[hash]?.[p?.["has_sup"]]
+    : site.build?.[hash]?.[site.p?.["has_instance"]] && site.build?.[hash]?.[site.p?.["has_sup"]]
     ? father(hash)
     : hide_other("index_page");
 }
