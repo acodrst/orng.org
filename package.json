@@ -16,6 +16,6 @@
     "@rollup/plugin-node-resolve": "^15.3.0",
     "rollup": "^4.24.0",
     "rollup-license-plugin": "^3.0.0",
-    "fpng-sign-serve": "^1.0.1"
+    "fpng-sign-serve": "^1.0.4"
   }
 }

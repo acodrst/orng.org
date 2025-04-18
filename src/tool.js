@@ -1,5 +1,3 @@
-const emoji = "🍊";
-const domain = "orng.org";
 const backup = Deno.env.get("CL_ORN_BACKUP");
 import { create, web_deal } from "fpng-sign-serve";
 const now_text = Deno.readTextFileSync("site_long.txt").trim();
@@ -17,9 +15,9 @@ for (const i of now_text.split("\n")) {
 }
 Deno.writeTextFileSync("site_long.txt", st);
 let mod_site=JSON.parse(st)
-create(mod_site,domain,backup,emoji)
+create(mod_site,backup)
 Deno.serve({
   port: 3052,
   hostname: "0.0.0.0",
-  handler: (req) => web_deal(req,domain),
+  handler: (req) => web_deal(req),
 });

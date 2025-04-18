@@ -4,8 +4,8 @@ const b_style = document.createElement("style");
 b_style.textContent ='#l{margin-top:30vmin;margin-left:35vmin;}'
 document.head.appendChild(b_style);
 document.body.insertAdjacentHTML("beforeend",'<svg id="l" width="90" height="50"><rect width="90" height="50" fill="none"/><text y="20">⏳<animateMotion path="M 0 0 H 60 Z" dur="3s" repeatCount=9 /></text></svg>')
-const ʬt="20250415T163956349Z",
-ʬa="67e096ba",
+const ʬt="20250418T003128832Z",
+ʬa="c5e2aba5",
 ʬg = 1042990,
 ʬl="3704643";
 fetch(`${ʬt}-${ʬa}.png`).then((q) => {

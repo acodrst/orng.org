@@ -5227,9 +5227,10 @@ function bytesToBase64(bytes) {
     return result;
 }
 
+const metadata=JSON.parse(Deno.readTextFileSync("assets/metadata.json"));
 const dt = new Date();
 const tss = dt.toISOString().replaceAll(":", "").replaceAll("-","").replaceAll(".","");
-async function create(site, domain, backup, emoji) {
+async function create(site,backup) {
   const st = JSON.stringify(site);
   Deno.writeTextFileSync("site.txt", `let site=${st}\n`);
   const text = Deno.readTextFileSync("site.txt") +
@@ -5310,24 +5311,26 @@ async function create(site, domain, backup, emoji) {
       Deno.readTextFileSync(`assets/bootloader.template.js`)
         .replaceAll("thisistss", tss)
         .replaceAll("thisisadler", a32h)
-        .replaceAll("thisisemoji", emoji)
         .replaceAll("thisistextlength", st.length)
         .replaceAll("thisislength", fp_obj.ln),
     );
+    for (let i in metadata){
     Deno.writeTextFileSync(
-      `${domain}.page.html`,
+      `${i}.page.html`,
       Deno.readTextFileSync(`assets/pageops.html`)
-        .replaceAll("thisisemoji", emoji)
+        .replace("<title></title>",`<title>${metadata[i].title}</title>`)
+        .replace(`<meta name="description" content="">`,`<meta name="description" content="${metadata[i].description}">`)
         .replaceAll("thisistss", tss)
         .replaceAll("thisisadler", a32h)
     );
   }
+  }
 }
-function web_deal(req, domain) {
+function web_deal(req) {
   if (req.method == "GET") {
     const u = new URL(req.url);
     const page = u.pathname == "/"
-      ? `${domain}.page.html`
+      ? `${Object.keys(metadata)[0]}.page.html`
       : u.pathname.replace("/", "");
     let npg;
     let response;
@@ -5374,8 +5377,6 @@ const types = {
   "ico": "image/x-icon",
 };
 
-const emoji = "🍊";
-const domain = "orng.org";
 const backup = Deno.env.get("CL_ORN_BACKUP");
 const now_text = Deno.readTextFileSync("site_long.txt").trim();
 let st = "";
@@ -5392,9 +5393,9 @@ for (const i of now_text.split("\n")) {
 }
 Deno.writeTextFileSync("site_long.txt", st);
 let mod_site=JSON.parse(st);
-create(mod_site,domain,backup,emoji);
+create(mod_site,backup);
 Deno.serve({
   port: 3052,
   hostname: "0.0.0.0",
-  handler: (req) => web_deal(req,domain),
+  handler: (req) => web_deal(req),
 });
