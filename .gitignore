@@ -1,0 +1,10 @@
+images/**
+files/**
+node_modules/**
+index.html
+site.txt
+site_long.txt
+.*
+!.gitignore
+*.backup
+*~

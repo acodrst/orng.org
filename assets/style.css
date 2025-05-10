@@ -1,0 +1,253 @@
+  html {
+  font-family:Arial, Helvetica, sans-serif;
+  line-height:1.4rem;
+  }
+  a { text-decoration: none; }
+  @media (prefers-color-scheme: dark) {
+    a:visited { color: #8ab4f8; font-weight: bolder;}
+    a:link { color: #8ab4f8; font-weight: bolder;}
+    a:hover { color: lightblue; }
+    a:active { color: #48ffff; }
+    html {
+      color: #C9D1D9;
+      background-color: #0D1117;
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    a:visited { color: blue; font-weight:bolder;}
+    a:link { color: blue; font-weight:bolder;}
+    a:hover { color: #8ab4f8; }
+    a:active { color: purple; }
+    html {
+      color: #24292f;
+      background-color: #fdfdfd;
+    }
+  }
+@media (prefers-color-scheme: dark) {
+#bydate{
+  height:11.8rem;
+}
+#pins{
+  height:10.4rem;
+}
+#emo{
+  height:2.8rem;
+}
+textarea {
+    background-color: #0D1117;
+    color: #C9D1D9;
+}
+/*!
+  Theme: Unikitty 
+  Author: Josh W Lewis (@joshwlewis)
+  License: ~ MIT (or more permissive) [via base16-schemes-source]
+  Maintainer: @highlightjs/core-team
+  Version: 2021.09.0
+*/
+pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}.hljs{color:#bcbabe;background:#2e2a31}.hljs ::selection,.hljs::selection{background-color:#666369;color:#bcbabe}.hljs-comment{color:#838085}.hljs-tag{color:#9f9da2}.hljs-operator,.hljs-punctuation,.hljs-subst{color:#bcbabe}.hljs-operator{opacity:.7}.hljs-bullet,.hljs-deletion,.hljs-name,.hljs-selector-tag,.hljs-template-variable,.hljs-variable{color:#d8137f}.hljs-attr,.hljs-link,.hljs-literal,.hljs-number,.hljs-symbol,.hljs-variable.constant_{color:#d65407}.hljs-class .hljs-title,.hljs-title,.hljs-title.class_{color:#dc8a0e}.hljs-strong{font-weight:700;color:#dc8a0e}.hljs-addition,.hljs-code,.hljs-string,.hljs-title.class_.inherited__{color:#17ad98}.hljs-built_in,.hljs-doctag,.hljs-keyword.hljs-atrule,.hljs-quote,.hljs-regexp{color:#149bda}.hljs-attribute,.hljs-function .hljs-title,.hljs-section,.hljs-title.function_,.ruby .hljs-property{color:#796af5}.diff .hljs-meta,.hljs-keyword,.hljs-template-tag,.hljs-type{color:#bb60ea}.hljs-emphasis{color:#bb60ea;font-style:italic}.hljs-meta,.hljs-meta .hljs-keyword,.hljs-meta .hljs-string{color:#c720ca}.hljs-meta .hljs-keyword,.hljs-meta-keyword{font-weight:700} 
+}
+@media (prefers-color-scheme: light) {
+pre code.hljs { display: block; overflow-x: auto; padding: 1em; } code.hljs { padding: 3px 5px; } .hljs { color: #6c696e; background: #ffffff; } .hljs::selection, .hljs ::selection { background-color: #c4c3c5; color: #6c696e; } .hljs-formula, .hljs-params,.hljs-comment { color: #a7a5a8; } .hljs-tag { color: #89878b; } .hljs-subst, .hljs-punctuation, .hljs-operator { color: #6c696e; } .hljs-operator { opacity: 0.7; } .hljs-bullet, .hljs-variable, .hljs-template-variable, .hljs-selector-tag, .hljs-name, .hljs-deletion { color: #d8137f; } .hljs-symbol, .hljs-number, .hljs-link, .hljs-attr, .hljs-variable.constant_, .hljs-literal { color: #d65407; } .hljs-title, .hljs-class .hljs-title, .hljs-title.class_ { color: #dc8a0e; } .hljs-strong { font-weight:bold; color: #dc8a0e; } .hljs-code, .hljs-addition, .hljs-title.class_.inherited__, .hljs-string { color: #17ad98; } .hljs-built_in, .hljs-doctag, .hljs-quote, .hljs-keyword.hljs-atrule, .hljs-regexp { color: #149bda; } .hljs-function .hljs-title, .hljs-attribute, .ruby .hljs-property, .hljs-title.function_, .hljs-section { color: #775dff; } .hljs-type, .hljs-template-tag, .diff .hljs-meta, .hljs-keyword { color: #aa17e6; } .hljs-emphasis { color: #aa17e6; font-style: italic; } .hljs-meta, .hljs-meta .hljs-keyword, .hljs-meta .hljs-string { color: #e013d0; } .hljs-meta .hljs-keyword, .hljs-meta-keyword { font-weight: bold; }
+}
+#tag_cont{
+    margin: 0 auto;
+}
+#all{
+  display:flex;
+  justify-content: center;
+}
+img {
+  max-width: 100%;
+}
+svg {
+  max-width: 100%;
+}
+h1 {
+  margin-top:0px;
+  margin-bottom:.7rem;
+  font-weight:bold;
+  font-size:1.2rem;
+}
+h2 {
+  font-weight:bold;
+  font-size:1.2rem;
+}
+.txt_l {
+  font-size: 1.6rem;
+}
+.small {
+  font-size: .7rem;
+  line-height: .8rem;
+}
+#navigation {
+  display:flex;
+  column-gap:10px; 
+  height:38px;
+  align-items: center;
+}
+.nav {
+  font-size: 1.7rem;
+}
+.top {
+  font-size: .75rem;
+}
+.cit {
+  font-size: .65rem;
+  font-style:italic;
+}
+.comments {
+  margin-left: 3rem;
+}
+#app{
+  justify-content: left;
+  border-top: .1rem solid grey; 
+  grid-row:3;
+  grid-column:2;
+  overflow:auto;
+  display: flex;
+  border-bottom: .1rem solid grey; 
+}
+body {
+  height: 100%;
+  margin: 0px;
+}
+#pg {
+  display: grid;
+  height: 100%;
+}
+#pg {
+  grid-template-rows: .4rem 2.4rem calc(100dvh - 5.8rem) 2.6rem .4rem;
+  grid-template-columns: .7rem clamp(20rem, calc(100dvw - 1.4rem), 50rem) .7rem;
+}
+#header{
+  grid-row:2;
+  grid-column:2;
+  display: flex;
+  justify-content: center;
+}
+#dyno_page{
+  width:100%;
+  overflow:auto;
+}
+#footer{
+  padding-top:.2rem;
+  justify-content: center;
+  letter-spacing:.3rem;
+  grid-row:4;
+  grid-column:2;
+  align-self: center;
+  display: flex;
+}
+#l{
+  display:none;
+}
+#art{
+  padding:.5rem;
+}
+#sites {
+  display: flex;
+  align-self: center;
+  align-items: center;
+}
+#sites svg {
+  height:28px;
+  width:28px;
+}
+#sites a {
+  padding-left:3px;
+}
+#art_header {
+  display:inline-block;
+  font-weight:bold;
+  font-size:1.2rem;
+  width:100%;
+}
+
+#end_tags{
+  min-height:1rem;
+}
+#search_box{
+  height: 1.5rem;
+  width:52dvw;
+  font-size: 1rem;
+  margin-bottom:1rem;
+}
+#hb_cont{
+  overflow-x: hidden;
+  display: flex;
+}
+#header_block{
+  white-space:nowrap;
+  width:40vw;
+  display: grid;
+}
+#source{
+  align-self: center;
+  justify-content: right;
+  display: flex;
+}
+.taggy{
+  cursor: pointer; 
+  display: inline-block;
+  font-size: 1.2rem;
+}
+.mlist,.taggy{
+  font-family: monospace;
+  display: inline-block;
+}
+#search_details{
+  width:100%;
+}
+#tag_details{
+  font-family:monospace;
+  overflow: auto;
+  display: grid;
+  grid-template-rows: 1.2rem 1.2rem  calc(100dvh - 9rem);
+  grid-template-columns: 1fr 1fr;
+}
+#tag_header{
+  grid-row: 2;
+  grid-column: 1/3;
+}
+#sel_tag{
+  cursor: pointer; 
+  grid-row: 1;
+  grid-column: 1/3;
+}
+#rtags,#ltags,#sel_tag{
+  word-break: break-all;
+  display:  inline-block;
+}
+#ltags{
+  grid-column: 1;
+  grid-row: 3;
+}
+#rtags{
+  grid-column: 2;
+  grid-row: 3;
+}
+html {
+  height: 100%;
+  font-family:
+  "Segoe UI", Roboto, "Noto Sans",Ubuntu, Cantarell,"Helvetica Neue","Segoe UI Emoji","Segoe UI Symbol","Apple Color Emoji","Noto Color Emoji";
+}
+.leftee {
+  margin: 0px;
+  padding-right: 1em;
+  float: left;
+  min-width: 12em;
+  max-width: 25em;
+}
+.dt {
+    font-family: monospace;
+}
+.lines {
+  font-size: 1rem;
+  padding: .1rem;
+  display: flex;
+  align-items: center;
+}
+#tags{
+  flex:1;
+    width: 50%;
+}
