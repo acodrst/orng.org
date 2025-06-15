@@ -388,6 +388,18 @@ function tag(nd) {
   }
   document.getElementById("dyno_page").innerHTML = pg;
 }
+function export_site(){
+  hide_other("index_page");
+  const blob = new Blob([JSON.stringify(site,null,2)], { type: 'application/octet-stream' });
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement('a');
+ link.href = url;
+ link.download = "export_site.txt";
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ URL.revokeObjectURL(url);
+}
 function refresh() {
   const hash = globalThis.location.hash.substring(1) || "home";
   source_files = document.querySelector('input[name = "f"]:checked').value;
@@ -402,6 +414,8 @@ function refresh() {
     ? all()
     : hash == "search"
     ? search()
+    : hash=="export-site"
+    ? export_site()
     : hash == "help"
     ? hide_other("help")
     : hash == "legal"

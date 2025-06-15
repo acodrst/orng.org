@@ -4,10 +4,10 @@ const b_style = document.createElement("style");
 b_style.textContent ='#l{margin-top:30vmin;margin-left:35vmin;}'
 document.head.appendChild(b_style);
 document.body.insertAdjacentHTML("beforeend",'<svg id="l" width="90" height="50"><rect width="90" height="50" fill="none"/><text y="20">⏳<animateMotion path="M 0 0 H 60 Z" dur="3s" repeatCount=9 /></text></svg>')
-const ʬt="20250423T130926219Z",
-ʬa="c2a2eab0",
-ʬg = 1043933,
-ʬl="3704636";
+const ʬt="20250615T151354833Z",
+ʬa="52654bf1",
+ʬg = 1044019,
+ʬl="3704639";
 fetch(`${ʬt}-${ʬa}.png`).then((q) => {
 q.arrayBuffer().then((a) => {
   let l = fflate.unzlibSync(new Uint8Array(a.slice(41, -16))),
